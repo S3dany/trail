@@ -1,3 +1,3 @@
 cd ../
-bash gradlew test
-bash gradlew connectedAndroidTest
+bash ./gradlew test
+bash ./gradlew connectedAndroidTest
