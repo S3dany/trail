@@ -1,3 +1,3 @@
 cd ../
-CALL gradlew test
-CALL gradlew connectedAndroidTest
+gradlew test
+gradlew connectedAndroidTest
