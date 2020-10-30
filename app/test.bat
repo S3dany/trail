@@ -1,3 +1,3 @@
-
-./gradlew test
-./gradlew connectedAndroidTest
+cd ../
+CALL gradlew test
+CALL gradlew connectedAndroidTest
