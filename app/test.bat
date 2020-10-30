@@ -1,1 +1,3 @@
-ls
+
+./gradlew test
+./gradlew connectedAndroidTest
