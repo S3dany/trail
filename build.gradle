@@ -41,7 +41,7 @@ tasks['sonarqube'].dependsOn test
 
 jacoco {
     toolVersion = "0.8.5"
-    reportsDir = file("$buildDir/jacoco")
+    reportsDir = file("app/$buildDir/jacoco")
 }
 
 jacocoTestReport{
@@ -51,8 +51,9 @@ jacocoTestReport{
         html.enabled false
         xml.enabled true
         csv.enabled false
-        html.destination file("app/build/html")
-        xml.destination file("app/build/jacoco.xml")
+        html.destination file("${buildDir}/html")
+        xml.destination file("app/build/jacoco/xml")
     }
-    executionData.from = files('app/build/test.exec')
+    executionData.from = files('app/build/jacoco/test.exec')
 }
+
