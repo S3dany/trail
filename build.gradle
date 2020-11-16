@@ -24,6 +24,12 @@ sonarqube{
     }
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
 test {
     ignoreFailures = true;
 }
