@@ -44,10 +44,6 @@ jacoco {
     reportsDir = file("$buildDir/jacoco")
 }
 
-test {
-    finalizedBy jacocoTestReport
-}
-
 jacocoTestReport{
     dependsOn test
     additionalSourceDirs.from = files(sourceSets.main.allJava.srcDirs)
