@@ -45,7 +45,7 @@ jacoco {
 }
 
 jacocoTestReport{
-    dependsOn test
+
     additionalSourceDirs.from = files(sourceSets.main.allJava.srcDirs)
     reports {
         html.enabled false
