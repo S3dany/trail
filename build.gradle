@@ -45,8 +45,6 @@ jacoco {
 }
 
 jacocoTestReport{
-
-    additionalSourceDirs.from = files(sourceSets.main.allJava.srcDirs)
     reports {
         html.enabled false
         xml.enabled true
