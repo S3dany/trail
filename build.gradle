@@ -44,6 +44,10 @@ jacoco {
     reportsDir = file("app/$buildDir/jacoco")
 }
 
+test {
+    finalizedBy jacocoTestReport
+}
+
 jacocoTestReport{
     reports {
         html.enabled false
@@ -53,4 +57,3 @@ jacocoTestReport{
     }
     executionData.from = files('app/build/jacoco/test.exec')
 }
-
