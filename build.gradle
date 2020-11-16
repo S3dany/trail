@@ -14,10 +14,11 @@ buildscript {
 }
 
 plugins {
-    id "org.sonarqube" version "2.7"
-    id "jacoco"
-    id "java"
+    id 'java'
+    id 'jacoco'
+    id 'org.sonarqube' version '3.0'
 }
+
 
 allprojects {
     repositories {
@@ -27,4 +28,40 @@ allprojects {
 }
 
 
+sonarqube {
+    properties {
+        property 'sonar.host.url', 'http://104.155.16.81/'
+    }
+}
 
+tasks['sonarqube'].dependsOn test
+
+jacoco {
+    toolVersion = "0.8.5"
+    reportsDir = file("$buildDir/jacoco")
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport{
+    dependsOn test
+    additionalSourceDirs.from = files(sourceSets.main.allJava.srcDirs)
+    reports {
+        html.enabled false
+        xml.enabled true
+        csv.enabled false
+        html.destination file("build/reports/jacoco/html")
+        xml.destination file("build/reports/jacoco/xml")
+    }
+    executionData.from = files('build/jacoco/test.exec')
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
