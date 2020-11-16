@@ -31,7 +31,7 @@ jacocoTestReport {
         csv.enabled false
         //to create coverage report in html
         html.destination file("${buildDir}/reports/coverage")
-        //for XML
+        //for XML coverage
         xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }
