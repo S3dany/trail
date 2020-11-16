@@ -18,25 +18,33 @@ plugins {
     id "jacoco"
     id "java"
 }
+tasks.withType(Test) {
+    finalizedBy jacocoTestReport
+}
+
+// Configure the report to look for executionData generated during the test and integrationTest task
+jacocoTestReport {
+    executionData(file("${project.buildDir}/jacoco/test.exec"),
+            file("${project.buildDir}/jacoco/integrationTest.exec"))
+    reports {
+        // for sonarqube
+        xml.enabled true
+        xml.destination(file("${project.buildDir}/reports/jacoco/all-tests/jacocoAllTestReport.xml"))
+        // for devs
+        html.enabled true
+        html.destination file("${project.buildDir}/reports/jacoco/all-tests/html")
+    }
+}
 sonarqube{
     properties{
         property "sonar.jacoco.reportPath","${project.buildDir}/jacoco/test.exec)"
         property 'sonar.core.codeCoveragePlugin', 'jacoco'
-        property 'sonar.coverage.jacoco.xmlReportPaths', '${project.buildDir}/reports/jacoco.xml'
+        property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/test-results/integrationTest"
+        properties["sonar.junit.reportPaths"] += "${project.buildDir}/test-results/integrationTest"
+        properties["sonar.tests"] += sourceSets.integrationTest.allSource.srcDirs
     }
 }
-
-jacocoTestReport {
-    group = "Reporting"
-    reports {
-        xml.enabled true
-        csv.enabled false
-        //to create coverage report in html
-        html.destination file("${buildDir}/reports/coverage")
-        //for XML coverage
-        xml.destination file("${buildDir}/reports/jacoco.xml")
-    }
-}
+project.tasks["sonarqube"].dependsOn "jacocoTestReport"
 
 
 test {
