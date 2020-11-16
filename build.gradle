@@ -55,12 +55,8 @@ jacocoTestReport{
         html.enabled false
         xml.enabled true
         csv.enabled false
-        html.destination file("build/html")
-        xml.destination file("build/xml")
+        html.destination file("app/build/html")
+        xml.destination file("app/build/jacoco.xml")
     }
-    executionData.from = files('build/test.exec')
-}
-
-test {
-    finalizedBy jacocoTestReport
+    executionData.from = files('app/build/test.exec')
 }
