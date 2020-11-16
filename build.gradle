@@ -12,9 +12,26 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
 plugins {
     id "org.sonarqube" version "2.7"
+    id "jacoco"
+    id "java"
 }
+sonarqube{
+    properties{
+        property "sonar.jacoco.reportPath","${project.buildDir}/jacoco/test.exec)"
+    }
+}
+
+test {
+    ignoreFailures = true;
+}
+repositories {
+    jcenter()
+}
+
+
 allprojects {
     repositories {
         google()
@@ -22,6 +39,5 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+
+
