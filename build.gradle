@@ -27,9 +27,6 @@ allprojects {
     }
 }
 
-test {
-    finalizedBy jacocoTestReport
-}
 
 dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.12'
@@ -58,3 +55,5 @@ jacocoTestReport{
     }
     executionData.from = files('app/build/jacoco/test.exec')
 }
+
+test.finalizedBy jacocoTestReport
