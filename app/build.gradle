@@ -61,3 +61,6 @@ buildscript {
     }
 }
 
+task classesJar(type: Jar) {
+    from "$buildDir/intermediates/"
+}

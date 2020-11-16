@@ -27,6 +27,9 @@ allprojects {
     }
 }
 
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
 
 sonarqube {
     properties {
@@ -52,16 +55,12 @@ jacocoTestReport{
         html.enabled false
         xml.enabled true
         csv.enabled false
-        html.destination file("build/reports/jacoco/html")
-        xml.destination file("build/reports/jacoco/xml")
+        html.destination file("build/html")
+        xml.destination file("build/xml")
     }
-    executionData.from = files('build/jacoco/test.exec')
+    executionData.from = files('build/test.exec')
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+test {
+    finalizedBy jacocoTestReport
 }
