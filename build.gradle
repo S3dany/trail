@@ -13,11 +13,6 @@ buildscript {
     }
 }
 
-plugins {
-    id 'java'
-    id 'jacoco'
-    id 'org.sonarqube' version '3.0'
-}
 
 
 allprojects {
@@ -28,32 +23,3 @@ allprojects {
 }
 
 
-dependencies {
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
-}
-
-sonarqube {
-    properties {
-        property 'sonar.host.url', 'http://104.155.16.81/'
-    }
-}
-
-tasks['sonarqube'].dependsOn test
-
-jacoco {
-    toolVersion = "0.8.5"
-    reportsDir = file("app/$buildDir/jacoco")
-}
-
-
-jacocoTestReport{
-    reports {
-        html.enabled false
-        xml.enabled true
-        csv.enabled false
-        xml.destination file("app/build/jacoco/.xml")
-    }
-    executionData.from = files('app/build/jacoco/test.exec')
-}
-
-test.finalizedBy jacocoTestReport
