@@ -111,7 +111,7 @@ task jacocoTestReport(type: JacocoReport) {
     reports {
         xml.enabled = true
         html.enabled = true
-        html.destination file("app/build/jacoco/html")
-        xml.destination file("app//build/jacoco/xml")
+        html.destination file(".../app/build/jacoco/html")
+        xml.destination file(".../app//build/jacoco/xml")
     }
 }
