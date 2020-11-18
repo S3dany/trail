@@ -25,6 +25,13 @@ android {
             testCoverageEnabled = true
         }
     }
+    testOptions {
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+    }
 }
 
 
@@ -44,8 +51,6 @@ dependencies {
 
 
 }
-
-apply from: "$project.rootDir/jacoco.gradle"
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.sourceFiles
@@ -83,3 +88,13 @@ task classesJar(type: Jar) {
     from "$buildDir/intermediates/"
 }
 
+
+//  Setup jacoco report format. We need xml for Sonarqube
+
+jacocoAndroidUnitTestReport {
+    csv.enabled false
+    html.enabled false
+    xml.enabled true
+    html.destination file("app/build/jacoco/html")
+    xml.destination file("app/build/jacoco/xml")
+}
