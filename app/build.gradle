@@ -45,7 +45,7 @@ dependencies {
 
 }
 
-
+apply from: "$project.rootDir/jacoco.gradle"
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.sourceFiles
