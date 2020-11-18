@@ -64,9 +64,9 @@ project.afterEvaluate {
 
             classDirectories.setFrom(files([
                     fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: fileFilter),
-                    fileTree(dir: "$project.rootDir/app/build/tmp/kotlin-classes/debug", excludes: fileFilter),
-                    fileTree(dir: "$project.rootDir/app/build/tmp/kotlin-classes/debug", excludes: fileFilter),
-                    fileTree(dir: "$project.rootDir/app/build/tmp/kotlin-classes/debug", excludes: fileFilter),
+                    fileTree(dir: "$project.rootDir/module1/build/tmp/kotlin-classes/debug", excludes: fileFilter),
+                    fileTree(dir: "$project.rootDir/module2/build/tmp/kotlin-classes/debug", excludes: fileFilter),
+                    fileTree(dir: "$project.rootDir/moduleN/build/tmp/kotlin-classes/debug", excludes: fileFilter),
             ]))
 
             def coverageSourceDirs = [
