@@ -107,7 +107,7 @@ jacoco {
 task jacocoTestReport(type: JacocoReport) {
     group = "Reporting"
     description = "Generate Jacoco coverage reports for Debug build"
-
+   //please build
     reports {
         xml.enabled = true
         html.enabled = true
