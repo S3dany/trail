@@ -94,3 +94,22 @@ artifacts {
     archives javadocJar
     archives sourcesJar
 }
+
+ext {
+    coverageSourceDirs = 'src/test/java'
+}
+
+jacoco {
+    toolVersion = "0.8.3"
+    reportsDir = file("../app/build/reports/rep") // file for reports (xml, html)
+}
+
+task jacocoTestReport(type: JacocoReport) {
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports for Debug build"
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
