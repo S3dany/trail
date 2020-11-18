@@ -39,9 +39,9 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.3'
-    implementation 'androidx.navigation:navigation-fragment:2.1.0'
-    implementation 'androidx.navigation:navigation-ui:2.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -63,7 +63,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.0"
     }
 }
 
@@ -100,7 +100,7 @@ ext {
 }
 
 jacoco {
-    toolVersion = "0.8.3"
+    toolVersion = "0.8.5"
     reportsDir = file("../app/build/reports/rep") // file for reports (xml, html)
 }
 
@@ -111,7 +111,5 @@ task jacocoTestReport(type: JacocoReport) {
     reports {
         xml.enabled = true
         html.enabled = true
-        html.destination file(".../app/build/jacoco/html")
-        xml.destination file(".../app//build/jacoco/xml")
     }
 }
