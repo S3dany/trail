@@ -89,12 +89,3 @@ task classesJar(type: Jar) {
 }
 
 
-//  Setup jacoco report format. We need xml for Sonarqube
-
-jacocoAndroidUnitTestReport {
-    csv.enabled false
-    html.enabled false
-    xml.enabled true
-    html.destination file("app/build/jacoco/html")
-    xml.destination file("app/build/jacoco/xml")
-}
