@@ -13,7 +13,6 @@ public class FriendRequest {
     public FriendRequest( User from, User to) {
         this.from = from;
         this.to = to;
-        this.status = status;
     }
 
     public String getRequest_id() {
