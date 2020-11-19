@@ -38,5 +38,4 @@ sonarqube {
     }
 }
 
-tasks['sonarqube'].dependsOn test
 
