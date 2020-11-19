@@ -59,9 +59,16 @@ buildscript {
     }
     dependencies {
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8"
+        classpath "gradle.plugin.com.vanniktech:gradle-android-junit-jacoco-plugin:0.16.0"
     }
 }
+apply plugin: "com.vanniktech.android.junit.jacoco"
 
+junitJacoco {
+    jacocoVersion = '0.8.4'
+    includeNoLocationClasses = true
+    includeInstrumentationCoverageInMergedReport = true
+}
 
 task javadoc(type: Javadoc) {
     failOnError false
@@ -82,4 +89,8 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 task classesJar(type: Jar) {
     from "$buildDir/intermediates/"
 }
+
+
+
+
 
